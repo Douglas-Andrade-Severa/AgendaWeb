@@ -49,9 +49,9 @@
 		%>
 
 		<h1 class="text-center mt-5 mb-5">Editar Contato</h1>
-		<form action="recebeDadosEditar.jsp" method="POST">
+		<form action="recebeDadosEditar.jsp?" method="POST">
 			<div>
-				<label class="form-label">ID</label> <input class="form-control" type="text" readonly="readonly" name="id" value=<%out.print(id);%>>
+				<label class="form-label">ID</label> <input class="form-control" type="text" readonly="readonly" name="id" value=<%out.print(contato.getId());%>>
 			</div>
 			<div>
 				<label class="form-label">Informe nome</label> 
@@ -100,7 +100,7 @@
 				return;
 			}
 			// Se tudo estiver preenchido, envia o formulário
-			document.getElementsByTagName("form")[0].submit()
+			document.getElementsByTagName("form")[0].submit();
 		}
 		function limparCampos() {
 			document.getElementById("nome").value = ""; // Limpa o campo de nome
