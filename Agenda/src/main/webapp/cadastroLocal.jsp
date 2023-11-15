@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Cadastro de Locais</title>
+<title>Cadastro de Contatos</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -33,25 +33,22 @@
 <body>
 	<div class="container">
 		<%@ include file="./menu.jsp"%>
-		<h1 class="text-center mt-5 mb-5">Cadastrar Contatos</h1>
+		<h1 class="text-center mt-5 mb-5">Cadastrar Local</h1>
 		<form action="recebeDados.jsp?" method="POST">
-			<div>
-			
-				<label class="form-label">Informe nome</label> 
-				<input class="form-control" type="text" placeholder="Informe nome" name="nome" id="nome">
-				<!-- Aqui vamos exibir a mensagem -->
+			<div class="input-group input-group-sm mb-3">
+			  	<span class="input-group-text" id="inputGroup-sizing-sm">Nome</span>
+				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nome" id="nome" required>
 				<jsp:include page="mensagemErro.jsp">
-					<jsp:param name="mensagem" value="O nome deve ser informado!" />
-					<jsp:param name="idAlerta" value="mensagemErroNome" />
+					<jsp:param name="mensagem" value="O Nome deve ser informado!" />
+					<jsp:param name="idAlerta" value="mensagemErroEmail" />
 					<jsp:param name="display"  value="none" />
 				</jsp:include>
 			</div>
-			<div class="mt-3">
-				<label class="form-label">Informe email</label> 
-				<input class="form-control" type="email" placeholder="Informe email" name="email" id="email">
-				<!-- Aqui vamos exibir a mensagem -->
+			<div class="input-group input-group-sm mb-3">
+			  	<span class="input-group-text" id="inputGroup-sizing-sm">Rua</span>
+				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="rua" id="rua" required>
 				<jsp:include page="mensagemErro.jsp">
-					<jsp:param name="mensagem" value="O E-mail deve ser informado!" />
+					<jsp:param name="mensagem" value="A rua deve ser informado!" />
 					<jsp:param name="idAlerta" value="mensagemErroEmail" />
 					<jsp:param name="display"  value="none" />
 				</jsp:include>

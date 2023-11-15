@@ -27,8 +27,8 @@ out.print("          <a class='nav-link dropdown-toggle' href='#' role='button' 
 out.print("            Locais");
 out.print("          </a>");
 out.print("          <ul class='dropdown-menu'>");
-out.print("            <li><a class='dropdown-item' href='./cadastroContato.jsp?'>Cadastrar local</a></li>");
-out.print("            <li><a class='dropdown-item' href='./consultaContato.jsp?'>Consultar local</a></li>");
+out.print("            <li><a class='dropdown-item' href='./cadastroLocal.jsp?'>Cadastrar local</a></li>");
+out.print("            <li><a class='dropdown-item' href='./consultaLocal.jsp?'>Consultar local</a></li>");
 out.print("            <li><hr class='dropdown-divider'></li>");
 out.print("            <li><a class='dropdown-item' href='#'>Outros</a></li>");
 out.print("          </ul>");
