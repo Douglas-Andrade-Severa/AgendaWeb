@@ -49,27 +49,23 @@
 		%>
 
 		<h1 class="text-center mt-5 mb-5">Editar Contato</h1>
-		<form action="recebeDadosEditar.jsp?" method="POST">
+		<form action="recebeDadosEditar.jsp" method="POST">
 			<div>
-				<label class="form-label">ID</label> <input class="form-control"
-					type="text" readonly="readonly" name="id"
-					value=<%out.print(id);%>>
+				<label class="form-label">ID</label> <input class="form-control" type="text" readonly="readonly" name="id" value=<%out.print(id);%>>
 			</div>
 			<div>
-				<label class="form-label">Informe nome</label> <input
-					class="form-control" type="text" placeholder="Informe nome"
-					name="nome" id="nome" value=<%out.print(contato.getNome());%>>
+				<label class="form-label">Informe nome</label> 
+				<input class="form-control" type="text" placeholder="Informe nome" name="nome" id="nome" value=<% out.print(contato.getNome()); %>>
 				<!-- Aqui vamos exibir a mensagem -->
 				<jsp:include page="mensagemErro.jsp">
 					<jsp:param name="mensagem" value="O nome deve ser informado!" />
 					<jsp:param name="idAlerta" value="mensagemErroNome" />
-					<jsp:param name="display" value="none" />
+					<jsp:param name="display"  value="none" />
 				</jsp:include>
 			</div>
 			<div class="mt-3">
-				<label class="form-label">Informe email</label> <input
-					class="form-control" type="email" placeholder="Informe email"
-					name="email" id="email" value=<%out.print(contato.getEmail());%>>
+				<label class="form-label">Informe email</label> 
+				<input class="form-control" type="email" placeholder="Informe email" name="email" id="email" value=<%out.print(contato.getEmail());%>>
 				<!-- Aqui vamos exibir a mensagem -->
 				<jsp:include page="mensagemErro.jsp">
 					<jsp:param name="mensagem" value="O E-mail deve ser informado!" />
@@ -79,10 +75,10 @@
 			</div>
 			<div class="mt-5 d-flex justify-content-around">
 				<button onclick="validaDados()" class="btn btn-outline-primary">Enviar</button>
-				<input type="reset" class="btn btn-outline-danger"
-					onclick="limparCampos()" />
+				<input type="reset" class="btn btn-outline-danger" onclick="limparCampos()" />
 			</div>
 		</form>
+		<%@ include file="./footer.jsp" %>
 	</div>
 	<script>
 		function validaDados() {

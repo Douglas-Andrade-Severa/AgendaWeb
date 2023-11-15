@@ -33,7 +33,6 @@
 <body>
 	<div class="container">
 		<%@ include file="./menu.jsp"%>
-
 		<h1 class="text-center mt-5 mb-5">Cadastrar Contatos</h1>
 		<form action="recebeDados.jsp" method="POST">
 			<div>
@@ -61,6 +60,7 @@
 			    <input type="reset" class="btn btn-outline-danger" onclick="limparCampos()" />
 			</div>
 		</form>
+		<%@ include file="./footer.jsp" %>
 	</div>
 	<script>
     function validaDados() {
