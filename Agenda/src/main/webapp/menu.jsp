@@ -40,7 +40,7 @@ out.print("            		Compromissos");
 out.print("          	</a>");
 out.print("          	<ul class='dropdown-menu'>");
 out.print("            		<li><a class='dropdown-item' href='./cadastroCompromisso.jsp?'>Cadastrar compromisso</a></li>");
-out.print("            		<li><a class='dropdown-item' href='#'>Consultar compromissos</a></li>");
+out.print("            		<li><a class='dropdown-item' href='./consultaCompromisso.jsp?'>Consultar compromissos</a></li>");
 out.print("            		<li><hr class='dropdown-divider'></li>");
 out.print("            		<li><a class='dropdown-item' href='#'>Outros</a></li>");
 out.print("          	</ul>");

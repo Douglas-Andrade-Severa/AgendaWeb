@@ -10,25 +10,25 @@
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
-<style>
-.erro-alert {
-	background-color: #ff5050;
-	color: white;
-	padding: 10px;
-	border-radius: 5px;
-	margin-top: 5px;
-	display: none;
-	position: relative;
-}
+	<style>
+	.erro-alert {
+            background-color: #ff5050;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            display: none;
+            position: relative;
+        }
 
-.erro-alert .fechar-alerta {
-	position: absolute;
-	top: 5px;
-	right: 10px;
-	color: white;
-	cursor: pointer;
-}
-</style>
+        .erro-alert .fechar-alerta {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+        }
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -38,22 +38,18 @@
 			<div>
 				<label class="form-label">Informe nome</label> 
 				<input class="form-control" type="text" placeholder="Informe nome" name="nome" id="nome">
-				<!-- Aqui vamos exibir a mensagem -->
-				<jsp:include page="mensagemErro.jsp">
-					<jsp:param name="mensagem" value="O nome deve ser informado!" />
-					<jsp:param name="idAlerta" value="mensagemErroNome" />
-					<jsp:param name="display"  value="none" />
-				</jsp:include>
+				<div class="erro-alert" id="mensagemErroNome">
+	            	O nome deve ser informado!
+	                <span class="fechar-alerta" onclick="fecharAlerta('mensagemErroNome')">X</span>
+	            </div>
 			</div>
 			<div class="mt-3">
 				<label class="form-label">Informe email</label> 
 				<input class="form-control" type="email" placeholder="Informe email" name="email" id="email">
-				<!-- Aqui vamos exibir a mensagem -->
-				<jsp:include page="mensagemErro.jsp">
-					<jsp:param name="mensagem" value="O E-mail deve ser informado!" />
-					<jsp:param name="idAlerta" value="mensagemErroEmail" />
-					<jsp:param name="display"  value="none" />
-				</jsp:include>
+				<div class="erro-alert" id="mensagemErroEmail">
+	            	O email deve ser informado!
+	                <span class="fechar-alerta" onclick="fecharAlerta('mensagemErroEmail')">X</span>
+	            </div>
 			</div>
 			<div class="mt-5 d-flex justify-content-around">
 			    <button onclick="validaDados()" class="btn btn-outline-primary">Enviar</button>
@@ -90,6 +86,9 @@
         // Esconder os alertas de erro, caso eles estejam visíveis
         document.getElementById("mensagemErroNome").style.display = "none";
         document.getElementById("mensagemErroEmail").style.display = "none";
+    }
+    function fecharAlerta(id) {
+        document.getElementById(id).style.display = "none";
     }
 </script>
 </body>

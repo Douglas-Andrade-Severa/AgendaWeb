@@ -5,13 +5,17 @@ import java.time.LocalTime;
 
 public class Compromissos {
 	private int id;
-    private String local;
-    private String contato;
-    private LocalDate data;
-    private LocalTime hora;
-    private String status;
+    private int local;
+    private int contato;
+    private String data;
+    private String hora;
+    private int status;
     
-    public Compromissos(int id, String local, String contato, LocalDate data, LocalTime hora, String status) {
+    private String dslocal;
+    private String dscontato;
+    private String dsStatus;
+    //principal manutenção
+    public Compromissos(int id, int local, int contato, String data, String hora, int status) {
 		this.id = id;
 		this.local = local;
 		this.contato = contato;
@@ -19,41 +23,89 @@ public class Compromissos {
 		this.hora = hora;
 		this.status = status;
 	}
+    
+    public Compromissos(int id, String data, String hora, String dslocal, String dscontato, String dsStatus) {
+		this.id = id;
+		this.data = data;
+		this.hora = hora;
+		this.dslocal = dslocal;
+		this.dscontato = dscontato;
+		this.dsStatus = dsStatus;
+	}    
+
+	public Compromissos() {
+    	
+    }
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLocal() {
+
+	public int getLocal() {
 		return local;
 	}
-	public void setLocal(String local) {
+
+	public void setLocal(int local) {
 		this.local = local;
 	}
-	public String getContato() {
+
+	public int getContato() {
 		return contato;
 	}
-	public void setContato(String contato) {
+
+	public void setContato(int contato) {
 		this.contato = contato;
 	}
-	public LocalDate getData() {
+
+	public String getData() {
 		return data;
 	}
-	public void setData(LocalDate data) {
+
+	public void setData(String data) {
 		this.data = data;
 	}
-	public LocalTime getHora() {
+
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(LocalTime hora) {
+
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	public String getStatus() {
+
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+
+	public void setStatus(int status) {
 		this.status = status;
 	}
-	    
+
+	public String getDslocal() {
+		return dslocal;
+	}
+
+	public void setDslocal(String dslocal) {
+		this.dslocal = dslocal;
+	}
+
+	public String getDscontato() {
+		return dscontato;
+	}
+
+	public void setDscontato(String dscontato) {
+		this.dscontato = dscontato;
+	}
+
+	public String getDsStatus() {
+		return dsStatus;
+	}
+
+	public void setDsStatus(String dsStatus) {
+		this.dsStatus = dsStatus;
+	}
 }

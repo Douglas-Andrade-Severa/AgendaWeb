@@ -42,13 +42,13 @@
 	<div class="container">
 		<%@ include file="./menu.jsp"%>
 		<h1 class="text-center mt-5 mb-5">Cadastrar compromissos</h1>
-			<form action="recebeDadosCompromisso.jsp?" method="POST">
+		<form action="recebeDadosCompromisso.jsp?" method="POST">
 		    <div class="container mt-5">
 		        <div class="row">	            
 		            <div class="col-md-6">
 		                <h4>Data</h4>
 		                <div class="input-group date" id="datepicker" data-target-input="nearest">
-		                    <input type="text" class="form-control datetimepicker-input" data-target="#datepicker" placeholder="Selecione a data" name="data" onkeypress="return isNumberKey(event)"/>
+		                    <input type="text" class="form-control datetimepicker-input" data-target="#datepicker" placeholder="Selecione a data" name="data" id="data" onkeypress="return isNumberKey(event)"/>
 		                    <div class="input-group-append" data-target="#datepicker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                    </div>
@@ -57,7 +57,7 @@
 		            <div class="col-md-6">
 		                <h4>Horário</h4>
 		                <div class="input-group date" id="timepicker" data-target-input="nearest">
-		                    <input type="text" class="form-control datetimepicker-input" data-target="#timepicker" placeholder="Selecione a hora" name="hora" onkeypress="return isNumberKey(event)"/>
+		                    <input type="text" class="form-control datetimepicker-input" data-target="#timepicker" placeholder="Selecione a hora" name="hora" id="hora" onkeypress="return isNumberKey(event)"/>
 		                    <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -65,6 +65,22 @@
 		            </div>
 		        </div>
 		    </div>
+		    <div class="container mt-1">
+		        <div class="row">	
+					<div class="col-md-6">
+					    <div class="erro-alert" id="mensagemErroData">
+			                A data deve ser informado!
+			                <span class="fechar-alerta" onclick="fecharAlerta('mensagemErroData')">X</span>
+			            </div>
+			    	</div>
+			    	<div class="col-md-6">
+			    		<div class="erro-alert" id="mensagemErroHora">
+			            	O horário deve ser informado!
+			                    <span class="fechar-alerta" onclick="fecharAlerta('mensagemErroHora')">X</span>
+			            </div>
+			    	</div>
+			    </div>
+			</div>
 		    <div class="container mt-5">
 		        <div class="row">	
 					<div class="col-md-6">
@@ -81,11 +97,7 @@
 			                    }
 			                    %>
 			                </select>
-		            	</div>
-				        <div class="erro-alert" id="mensagemErroContato">
-		                    O Contato deve ser informado!
-		                    <span class="fechar-alerta" onclick="fecharAlerta('mensagemErroContato')">X</span>
-		                </div>
+		            	</div>				        
 		            </div>
 		            <div class="col-md-6">
 		                <h4>Selecione o local</h4>
@@ -114,6 +126,7 @@
 	            <input type="reset" class="btn btn-outline-danger" onclick="limparCampos()" />
 	        </div>
 		</form>
+		<%@ include file="./footer.jsp" %>
 	</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -163,30 +176,27 @@
             event.preventDefault();
             var inputData    = document.getElementById("data");
             var inputHora    = document.getElementById("hora");
-            var inputContato = document.getElementById("contato");
-            var inputLocal   = document.getElementById("local");
 
             var mensagemErroData 	= document.getElementById("mensagemErroData");
             var mensagemErroHora 	= document.getElementById("mensagemErroHora");
-            var mensagemErroContato = document.getElementById("mensagemErroContato");
-            var mensagemErroLocal   = document.getElementById("mensagemErroLocal");
+
 			
-            if (inputContato.value.trim() === '') {
-                mensagemErroContato.style.display = "block";
-                inputContato.focus();
+            if (inputData.value.trim() == '') {
+                mensagemErroData.style.display = "block";
+                inputData.focus();
                 return;
             } else {
-                mensagemErroContato.style.display = "none";
+                mensagemErroData.style.display = "none";
             }
             
-            if (inputLocal.value.trim() === '') {
-                mensagemErroLocal.style.display = "block";
-                inputLocal.focus();
+            if (inputHora.value.trim() == '') {
+                mensagemErroHora.style.display = "block";
+                inputHora.focus();
                 return;
             } else {
-                mensagemErroLocal.style.display = "none";
+                mensagemErroHora.style.display = "none";
             }
-            // Se todos os campos estiverem preenchidos, envia o formulário
+            
             document.getElementsByTagName("form")[0].submit();
         }
 
