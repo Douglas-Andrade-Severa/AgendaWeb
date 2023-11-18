@@ -36,7 +36,6 @@
 		<h1 class="text-center mt-5 mb-5">Cadastrar Contatos</h1>
 		<form action="recebeDados.jsp?" method="POST">
 			<div>
-			
 				<label class="form-label">Informe nome</label> 
 				<input class="form-control" type="text" placeholder="Informe nome" name="nome" id="nome">
 				<!-- Aqui vamos exibir a mensagem -->
