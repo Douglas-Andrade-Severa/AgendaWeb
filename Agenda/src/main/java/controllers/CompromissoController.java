@@ -96,8 +96,8 @@ public class CompromissoController {
 					+ " inner join tb_contatos as cont on cont.id=comp.contatoID\r\n"
 					+ " inner join tb_locais   as loca on loca.id=comp.localID\r\n"
 					+ " inner join tb_status   as stat on stat.id=comp.status\r\n"
-					+ " where comp.status < 5\r\n"
-					+ " order by data, hora asc");
+					+ " where comp.status\r\n"
+					+ " order by data");
 			ResultSet rs = stm.executeQuery();
 			while (rs.next()) {
 				compromissos.add(new Compromissos(rs.getInt("id"),rs.getString("data"),rs.getString("hora"),rs.getString("local"),rs.getString("contato"),rs.getString("descricao")));
@@ -111,4 +111,45 @@ public class CompromissoController {
     	
     	return compromissos;
     }
+	
+	public List<Compromissos> getCompromissosFiltrados(Compromissos compromisso) {
+	    List<Compromissos> compromissos = new ArrayList<>();
+	    Connection con = Conexao.conectar();
+	    try {
+	        // Montando a query base
+	        String query = "SELECT comp.id, cont.nome AS contato, loca.nome AS local, comp.data, comp.hora, stat.descricao "
+	                + "FROM tb_compromissos AS comp "
+	                + "INNER JOIN tb_contatos AS cont ON cont.id = comp.contatoID "
+	                + "INNER JOIN tb_locais AS loca ON loca.id = comp.localID "
+	                + "INNER JOIN tb_status AS stat ON stat.id = comp.status "
+	                + "WHERE 1 = 1 ";
+	        if (compromisso.getStatus() != 0) {
+	            query += "AND comp.status = ? ";
+	        }
+	        query += "ORDER BY comp.data"; 
+	        PreparedStatement stm = con.prepareStatement(query);
+	        int parameterIndex = 1;
+	        if (compromisso.getStatus() != 0) {
+	            stm.setInt(parameterIndex++, compromisso.getStatus());
+	        }
+	        ResultSet rs = stm.executeQuery();
+	        while (rs.next()) {
+	            compromissos.add(new Compromissos(
+	                    rs.getInt("id"),
+	                    rs.getString("data"),
+	                    rs.getString("hora"),
+	                    rs.getString("local"),
+	                    rs.getString("contato"),
+	                    rs.getString("descricao")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        Conexao.fechar();
+	    }
+
+	    return compromissos;
+	}
+
 }
