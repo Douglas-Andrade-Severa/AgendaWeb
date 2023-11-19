@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 String campox = "";
-
 String nome = "";
 String rua = "";
 int numero = 0;

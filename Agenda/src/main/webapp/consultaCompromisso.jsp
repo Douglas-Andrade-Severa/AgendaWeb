@@ -48,7 +48,7 @@
 					<td><%=compromisso.getDsStatus()%></td>
 					<td>
 					    <!-- Botões de editar e excluir com parâmetros -->
-					    <a href='./editarContato.jsp?id=<%= compromisso.getId() %>' class='btn btn-outline-primary btn-sm'>Editar</a>
+					    <a href='./editarCompromissos.jsp?id=<%= compromisso.getId() %>' class='btn btn-outline-primary btn-sm'>Editar</a>
 					    <a href="javascript:void(0);" onclick="confirmarExclusao(<%= compromisso.getId() %>)" class='btn btn-outline-danger btn-sm'>Excluir</a>
 					</td>
 				</tr>
@@ -59,7 +59,7 @@
 			<script>
 			    function confirmarExclusao(id) {
 			        if (confirm('Tem certeza de que deseja excluir este compromisso?')) {
-			            window.location.href = './recebeDadosEditar.jsp?id=' + id + '&operacao=excluir';
+			            window.location.href = './recebeDadosEditarCompromisso.jsp?id=' + id + '&operacao=excluir';
 			        }
 			    }
 			</script>

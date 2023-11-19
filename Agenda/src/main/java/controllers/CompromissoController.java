@@ -8,10 +8,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Compromissos;
-import models.Contato;
 import utils.Conexao;
 
 public class CompromissoController {
+	public Compromissos consultarByID(int id) {
+		Connection con = Conexao.conectar();
+		Compromissos compromisso = null;
+    	try {
+			PreparedStatement stm = con.prepareStatement("select * from tb_compromissos where id = ?");
+			stm.setInt(1, id);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				compromisso = new Compromissos(rs.getInt("id"),rs.getInt("localID"),rs.getInt("contatoID"),rs.getString("data"),rs.getString("hora"),rs.getInt("status"));
+			}
+		} catch (SQLException e) {
+		   e.printStackTrace();
+		}
+    	return compromisso;
+	}
+	
+	public boolean alterar(Compromissos compromissos) {
+    	Connection con = Conexao.conectar();
+    	String sql = "update tb_compromissos set localID=?, contatoID=?, data=?,hora=?,status=? where id = ?";
+    	try {
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, compromissos.getLocal());
+			stm.setInt(2, compromissos.getContato());
+			stm.setString(3, compromissos.getData());
+			stm.setString(4, compromissos.getHora());
+			stm.setInt(5, compromissos.getStatus());
+			stm.setInt(6, compromissos.getId());
+			stm.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;			
+		}
+    	finally {
+			Conexao.fechar();
+		}
+    	return true;
+    }
+	
+	public boolean excluir(Compromissos compromissos) {
+    	Connection con = Conexao.conectar();
+    	String sql = "delete from tb_compromissos where id = ?";
+    	try {
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, compromissos.getId());
+			stm.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;			
+		}
+    	finally {
+			Conexao.fechar();
+		}
+    	return true;
+    }
+	
 	public boolean salvar(Compromissos compromisso) {
     	Connection con = Conexao.conectar();
     	String sql = "insert into tb_compromissos(localID, contatoID, data, hora, status)values(?,?,?,?,?)";
