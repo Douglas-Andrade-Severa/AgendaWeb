@@ -45,24 +45,14 @@
 		<form action="recebeDadosCompromisso.jsp?" method="POST">
 		    <div class="container mt-5">
 		        <div class="row">	            
-		            <div class="col-md-6">
-		                <h4>Data</h4>
-		                <div class="input-group date" id="datepicker" data-target-input="nearest">
-		                    <input type="text" class="form-control datetimepicker-input" data-target="#datepicker" placeholder="Selecione a data" name="data" id="data" onkeypress="return isNumberKey(event)"/>
-		                    <div class="input-group-append" data-target="#datepicker" data-toggle="datetimepicker">
-		                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-		                    </div>
-		                </div>
-		            </div>
-		            <div class="col-md-6">
-		                <h4>Horário</h4>
-		                <div class="input-group date" id="timepicker" data-target-input="nearest">
-		                    <input type="text" class="form-control datetimepicker-input" data-target="#timepicker" placeholder="Selecione a hora" name="hora" id="hora" onkeypress="return isNumberKey(event)"/>
-		                    <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
-		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
-		                    </div>
-		                </div>
-		            </div>
+		            <div class="col-md-6"> 
+	                <h4>Data</h4>
+	                <input type="date" class="form-control" id="data" name="data">
+	            </div>
+	            <div class="col-md-6">
+	                <h4>Horário</h4>
+	                <input type="time" class="form-control" id="hora" name="hora">
+	            </div>
 		        </div>
 		    </div>
 		    <div class="container mt-1">
